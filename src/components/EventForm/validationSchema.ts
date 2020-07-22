@@ -7,13 +7,16 @@ const nameValidation = yup
   .max(30)
   .required();
 
-export const eventValidationSchema = yup.object({
-  firstName: nameValidation,
-  lastName: nameValidation,
-  email: yup
-    .string()
-    .email()
-    .required(),
-  date: yup // todo: integrate with moment.js
-    .date()
-});
+export const eventValidationSchema: yup.ObjectSchema = yup
+  .object()
+  .shape<EventFormValues>({
+    firstName: nameValidation,
+    lastName: nameValidation,
+    email: yup
+      .string()
+      .email()
+      .required(),
+    date: yup // todo: integrate with moment.js
+      .object()
+  });
+

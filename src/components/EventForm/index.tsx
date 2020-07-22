@@ -51,7 +51,7 @@ export const EventForm: React.FC = () => {
           />
           <Field
             component={DatePicker}
-            name="dateTime"
+            name="date"
             label="Event Date"
             disablePast={true}
           />
