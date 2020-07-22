@@ -1,11 +1,15 @@
 import React from "react";
 import moment from 'moment';
-import { Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import { eventValidationSchema } from "./validationSchema";
-import { TextField } from "formik-material-ui";
-import { Button } from "@material-ui/core";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import { DatePicker } from "formik-material-ui-pickers";
+import { Paper } from "@material-ui/core";
+import "./styles.css"
+import { NameInput } from "./NameInput";
+import { EmailInput } from "./EmailInput";
+import { DateInputWithPicker } from "./DateInputWithPicker";
+import { SubmitButton } from "./SubmitButton";
+import { ProgressIndicator } from "./ProgressIndicator";
+import { IntroText } from "./IntroHeader";
 
 export interface EventFormValues {
   firstName: string,
@@ -24,48 +28,39 @@ const eventFormInitialValues: EventFormValues = {
 export const EventForm: React.FC = () => {
 
   return (
-    <Formik<EventFormValues>
-      validationSchema={eventValidationSchema}
-      initialValues={eventFormInitialValues}
-      onSubmit={console.log}
-    >
-      {({ submitForm, isSubmitting }) => (
-        <Form>
-          <Field
-            component={TextField}
-            name="firstName"
-            type="text"
-            label="First name"
-          />
-          <Field
-            component={TextField}
-            name="lastName"
-            type="text"
-            label="Last name"
-          />
-          <Field
-            component={TextField}
-            name="email"
-            type="email"
-            label="Email"
-          />
-          <Field
-            component={DatePicker}
-            name="date"
-            label="Event Date"
-            disablePast={true}
-          />
-          {isSubmitting && <LinearProgress />}
-          <Button
-            variant="contained"
-            color="primary"
-            disabled={isSubmitting}
-            onClick={submitForm}
-          >
-            Submit
-          </Button>
-        </Form>
-      )}
-    </Formik>
+    <Paper elevation={3} className="container">
+      <Formik<EventFormValues>
+        validationSchema={eventValidationSchema}
+        initialValues={eventFormInitialValues}
+        onSubmit={console.log}
+      >
+        {({ submitForm, isSubmitting }) => (
+          <Form className="eventForm">
+            <IntroText />
+            <NameInput
+              label="First name"
+              name="firstName"
+            />
+            <NameInput
+              label="Last name"
+              name="lastName"
+            />
+            <EmailInput
+              name="email"
+              label="Email"
+            />
+            <DateInputWithPicker
+              name="date"
+              label="Event Date"
+            />
+            <ProgressIndicator isActive={isSubmitting} />
+            <SubmitButton
+              onSubmit={submitForm}
+              isSubmitting={isSubmitting}
+            />
+          </Form>
+        )}
+      </Formik>
+    </Paper>
   )
 }
