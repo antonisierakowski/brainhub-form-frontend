@@ -1,4 +1,4 @@
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery, call } from 'redux-saga/effects';
 import { SUBMIT_EVENT_FORM } from './constants';
 import { Action } from '../types';
 import { SubmitEventFormPayload } from './actions';
@@ -14,13 +14,13 @@ export function* requestSagas() {
   yield takeEvery(SUBMIT_EVENT_FORM, onSubmitEvent);
 }
 
-function* onSubmitEvent({ payload }: Action<SubmitEventFormPayload>) {
+export function* onSubmitEvent({ payload }: Action<SubmitEventFormPayload>) {
   try {
     const event: EventModel = {
       ...payload,
       date: payload.date.format(DATE_FORMAT),
     };
-    yield httpClient.submitEvent(event);
+    yield call(httpClient.submitEvent, event);
     yield put(createNotification({
       notificationType: NotificationType.SUCCESS,
       textContent: notificationMessages.succesfulSubmitMsg,
@@ -34,21 +34,22 @@ function* onSubmitEvent({ payload }: Action<SubmitEventFormPayload>) {
 export function* handleRequestError(error: Error) {
   switch (error.constructor) {
     case exceptions.ApiValidationError: {
-      yield createFailureNotification(notificationMessages.submitFailureMsg);
+      yield call(createFailureNotification, notificationMessages.submitFailureMsg);
       break;
     }
     case exceptions.NoApiResponseError: {
-      yield createFailureNotification(notificationMessages.noConnectionMsg);
+      yield call(createFailureNotification, notificationMessages.noConnectionMsg);
       break;
     }
     case exceptions.ApiInternalError:
     default: {
-      yield createFailureNotification(notificationMessages.internalErrorMsg);
+      yield call(createFailureNotification, notificationMessages.internalErrorMsg);
+
     }
   }
 }
 
-function* createFailureNotification(message: string) {
+export function* createFailureNotification(message: string) {
   yield put(createNotification({
     notificationType: NotificationType.FAILURE,
     textContent: message,

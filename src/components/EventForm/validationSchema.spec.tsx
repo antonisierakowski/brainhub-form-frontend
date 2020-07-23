@@ -8,9 +8,10 @@ const nameTooShort = 'te';
 const nameTooLong = thirtyOneCharacters;
 const emailValid = 'tester@test.com';
 const emailInvalid = 'inv@lid';
-const dateValid = moment();
+export const exampleDateAsString = '12-12-2222';
+const dateValid = moment(exampleDateAsString);
 const dateInvalid = '12.12.12';
-const validEventFixture: EventFormValues = {
+export const validEventFixture: EventFormValues = {
   date: dateValid,
   email: emailValid,
   firstName: nameValid,
