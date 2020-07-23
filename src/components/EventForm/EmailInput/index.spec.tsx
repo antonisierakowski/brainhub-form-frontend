@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { ProgressIndicator } from './index';
+import { EmailInput } from './index';
 
 it('should match to the generated snapshot', () => {
-  const { asFragment } = render(<ProgressIndicator isActive={true}/>);
+  const { asFragment } = render(<EmailInput name={'test'} label={'test'} />);
   expect(asFragment()).toMatchSnapshot();
 });

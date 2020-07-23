@@ -7,14 +7,20 @@ import { createNotification } from '../notifications/actions';
 import * as exceptions from '../../services/httpClient/exceptions';
 import { NotificationType } from '../notifications/model';
 import * as notificationMessages from '../../constants/notificationMessages';
+import { EventModel } from './model';
+import { DATE_FORMAT } from '../../constants';
 
 export function* requestSagas() {
   yield takeEvery(SUBMIT_EVENT_FORM, onSubmitEvent);
 }
 
-function* onSubmitEvent(action: Action<SubmitEventFormPayload>) {
+function* onSubmitEvent({ payload }: Action<SubmitEventFormPayload>) {
   try {
-    yield httpClient.submitEvent(action.payload);
+    const event: EventModel = {
+      ...payload,
+      date: payload.date.format(DATE_FORMAT),
+    };
+    yield httpClient.submitEvent(event);
     yield put(createNotification({
       notificationType: NotificationType.SUCCESS,
       textContent: notificationMessages.succesfulSubmitMsg,

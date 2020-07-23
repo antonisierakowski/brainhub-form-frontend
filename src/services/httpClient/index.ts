@@ -1,7 +1,7 @@
 import { BACKEND_DOMAIN } from '../../constants';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { EventFormValues } from '../../components/EventForm';
 import * as exceptions from './exceptions';
+import { EventModel } from '../../store/request/model';
 
 export enum StatusCode {
   OK = 200,
@@ -14,7 +14,7 @@ export interface ApiResponse<TBody> {
   response: TBody,
 }
 
-class HttpClient {
+export class HttpClient {
   private static instance: HttpClient;
   private axiosInstance: AxiosInstance;
   private readonly domain = BACKEND_DOMAIN;
@@ -62,7 +62,7 @@ class HttpClient {
     }
   }
 
-  async submitEvent(event: EventFormValues): Promise<void> {
+  async submitEvent(event: EventModel): Promise<void> {
     const endpoint = '/event';
     await this.post(endpoint, event);
   }

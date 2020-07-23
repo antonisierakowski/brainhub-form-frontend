@@ -8,7 +8,7 @@ export function* notificationSaga() {
   yield takeEvery(CREATE_NOTIFICATION, onCreateNotification);
 }
 
-function* onCreateNotification(action: Action<CreateNotificationPayload>) {
+export function* onCreateNotification(action: Action<CreateNotificationPayload>) {
   const id = shortid();
 
   yield put(createNotificationSuccess({

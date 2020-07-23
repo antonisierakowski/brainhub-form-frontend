@@ -14,5 +14,5 @@ export const NotificationContainer: React.FC = () => {
 };
 
 const notificationMapper = (notification: NotificationInterface) => (
-  <Notification id={notification.id} />
+  <Notification id={notification.id} key={notification.id} />
 );

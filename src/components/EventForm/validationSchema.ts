@@ -4,9 +4,10 @@ import { MAX_NAME_LENGTH, MIN_NAME_LENGTH } from '../../constants';
 import {
   createNameTooLongMessage,
   createNameTooShortMessage,
-  fieldIsRequiredMessage,
+  fieldIsRequiredMessage, validDateMessage,
   validEmailMessage,
 } from './validationMessages';
+import moment from 'moment';
 
 const nameValidation = (humanReadableFieldName: string) => yup
   .string()
@@ -23,6 +24,11 @@ export const eventValidationSchema: yup.ObjectSchema = yup
       .string()
       .email(validEmailMessage)
       .required(fieldIsRequiredMessage),
+    // @ts-ignore
     date: yup
-      .object(),
+      .object()
+      .test('isMoment', validDateMessage, (value) => {
+        return value instanceof moment;
+      })
+      .required(),
   });

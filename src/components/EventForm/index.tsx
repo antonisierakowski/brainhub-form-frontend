@@ -8,7 +8,7 @@ import { EmailInput } from './EmailInput';
 import { DateInputWithPicker } from './DateInputWithPicker';
 import { SubmitButton } from './SubmitButton';
 import { ProgressIndicator } from './ProgressIndicator';
-import { IntroText } from './IntroHeader';
+import { FormHeader } from './FormHeader';
 import { useFormSubmit } from './hook';
 import { submitEventForm } from '../../store/request/actions';
 
@@ -37,7 +37,7 @@ export const EventForm: React.FC = () => {
     >
       {({ submitForm, isSubmitting }) => (
         <Form className="eventForm">
-          <IntroText />
+          <FormHeader />
           <NameInput
             label="First name"
             name="firstName"
