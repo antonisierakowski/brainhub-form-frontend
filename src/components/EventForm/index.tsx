@@ -10,6 +10,8 @@ import { DateInputWithPicker } from "./DateInputWithPicker";
 import { SubmitButton } from "./SubmitButton";
 import { ProgressIndicator } from "./ProgressIndicator";
 import { IntroText } from "./IntroHeader";
+import { useFormSubmit } from "./hook";
+import { submitEventForm } from "../../store/request/actions";
 
 export interface EventFormValues {
   firstName: string,
@@ -26,13 +28,14 @@ const eventFormInitialValues: EventFormValues = {
 }
 
 export const EventForm: React.FC = () => {
+  const onFormSubmit = useFormSubmit(submitEventForm)
 
   return (
     <Paper elevation={3} className="container">
       <Formik<EventFormValues>
         validationSchema={eventValidationSchema}
         initialValues={eventFormInitialValues}
-        onSubmit={console.log}
+        onSubmit={onFormSubmit}
       >
         {({ submitForm, isSubmitting }) => (
           <Form className="eventForm">

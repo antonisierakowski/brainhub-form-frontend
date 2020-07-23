@@ -9,10 +9,10 @@ export interface CreateNotificationPayload {
 }
 
 export const createNotification = (
-  { notificationType, textContent }: CreateNotificationPayload
+  payload: CreateNotificationPayload
 ): Action<CreateNotificationPayload> => createAction(
   CREATE_NOTIFICATION,
-  { notificationType, textContent },
+  payload,
 )
 
 export interface CreateNotificationSuccessPayload {
@@ -22,13 +22,10 @@ export interface CreateNotificationSuccessPayload {
 }
 
 export const createNotificationSuccess = (
-  {notificationType, textContent, id}: CreateNotificationSuccessPayload
+  payload: CreateNotificationSuccessPayload
 ): Action<CreateNotificationSuccessPayload> => createAction(
-  CREATE_NOTIFICATION_SUCCESS, {
-    notificationType,
-    textContent,
-    id,
-  }
+  CREATE_NOTIFICATION_SUCCESS,
+  payload,
 );
 
 export interface RemoveNotificationPayload {
@@ -36,8 +33,8 @@ export interface RemoveNotificationPayload {
 }
 
 export const removeNotification = (
-  { id }: RemoveNotificationPayload
+  payload: RemoveNotificationPayload
 ): Action<RemoveNotificationPayload> => createAction(
   REMOVE_NOTIFICATION,
-  { id }
+  payload,
 )

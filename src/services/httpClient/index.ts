@@ -1,6 +1,8 @@
 import { BACKEND_DOMAIN } from "../../constants";
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { EventFormValues } from "../../components/EventForm";
+import * as exceptions from './exceptions';
+import { axiosConfig } from "./config";
 
 export enum StatusCode {
   OK = 200,
@@ -28,19 +30,38 @@ class HttpClient {
 
   private constructor() {
     this.axiosInstance = axios.create({
-      // todo config
+      baseURL: this.domain,
     });
+  }
+
+  private async handleResponse(response: AxiosResponse) {
+    if (!response) {
+      throw new exceptions.NoApiResponseError();
+    }
+    switch (response.status) {
+      case StatusCode.OK: {
+        return response;
+      }
+      case StatusCode.UNPROCESSABLE_ENTITY: {
+        throw new exceptions.ApiValidationError();
+      }
+      case StatusCode.INTERNAL_ERROR:
+      default: {
+        throw new exceptions.ApiInternalError();
+      }
+    }
   }
 
   private async post<TBody = any, TResponse = any>(
     url: string, body?: TBody
   ): Promise<AxiosResponse<TResponse>> {
-    return this.axiosInstance.post(url, body) // todo handle status codes
+    const response = await this.axiosInstance.post(url, body)
+    return this.handleResponse(response)
   }
 
   async submitEvent(event: EventFormValues): Promise<void> {
-    const url = `${this.domain}/event`;
-    await this.post(url, event);
+    const endpoint = '/event';
+    await this.post(endpoint, event);
   }
 
 }
