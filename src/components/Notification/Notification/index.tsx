@@ -3,23 +3,26 @@ import React from "react";
 import { Card, Typography } from "@material-ui/core";
 import "./styles.css"
 import { NotificationType } from "../../../store/notifications/model";
+import { useNotification } from "./hook";
 
 type Props = {
-  type: NotificationType
-  textContent: string
+  id: string,
 }
 
-export const Notification: React.FC<Props> = ({ type, textContent }) => {
+export const Notification: React.FC<Props> = ({ id }) => {
+  const { notification, onClose } = useNotification(id)
 
   return (
     <Card className="notification" elevation={3}>
       <div className="notificationBody">
-        {getIconType(type)}
+        {getIconType(notification.notificationType)}
         <Typography variant="subtitle2">
-          {textContent}
+          {notification.textContent}
         </Typography>
       </div>
-      <Close />
+      <Close
+        onClick={onClose}
+      />
     </Card>
   )
 }

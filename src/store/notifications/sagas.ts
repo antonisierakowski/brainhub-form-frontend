@@ -1,6 +1,6 @@
-import { CREATE_NOTIFICATION, CREATE_NOTIFICATION_SUCCESS } from "./constants";
+import { CREATE_NOTIFICATION } from "./constants";
 import { Action } from "../types";
-import { createNotification, CreateNotificationPayload, createNotificationSuccess } from "./actions";
+import { CreateNotificationPayload, createNotificationSuccess } from "./actions";
 import shortid from 'shortid'
 import { takeEvery, put } from "redux-saga/effects";
 
@@ -9,7 +9,7 @@ export function* notificationSaga() {
 }
 
 function* onCreateNotification(action: Action<CreateNotificationPayload>) {
-  const id = shortid()
+  const id = shortid();
 
   yield put(createNotificationSuccess({
     ...action.payload,

@@ -3,6 +3,6 @@ import { notificationSaga } from "./notifications/sagas";
 
 export default function* rootSaga() {
   yield all([
-    notificationSaga,
+    notificationSaga(),
   ])
 }

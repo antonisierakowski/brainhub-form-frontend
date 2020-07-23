@@ -1,20 +1,18 @@
 import React from "react";
-import { Notification } from '../Notification'
 import "./styles.css"
-import { NotificationType } from "../../../store/notifications/model";
+import { useNotifications } from "./hook";
+import { Notification } from "../Notification"
+import { Notification as NotificationInterface } from '../../../store/notifications/model'
 
 export const NotificationContainer: React.FC = () => {
-
+  const notifications = useNotifications()
   return (
     <div className="notificationContainer">
-      <Notification
-        type={NotificationType.SUCCESS}
-        textContent={"Your form has been submitted successfuly."}
-      />
-      <Notification
-        type={NotificationType.FAILURE}
-        textContent={"There was an error."}
-      />
+      {notifications.map(notificationMapper)}
     </div>
   )
 }
+
+const notificationMapper = (notification: NotificationInterface) => (
+  <Notification id={notification.id} />
+)
