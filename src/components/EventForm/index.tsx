@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 import moment from 'moment';
-import { Form, Formik } from "formik";
-import { eventValidationSchema } from "./validationSchema";
-import "./styles.css"
-import { NameInput } from "./NameInput";
-import { EmailInput } from "./EmailInput";
-import { DateInputWithPicker } from "./DateInputWithPicker";
-import { SubmitButton } from "./SubmitButton";
-import { ProgressIndicator } from "./ProgressIndicator";
-import { IntroText } from "./IntroHeader";
-import { useFormSubmit } from "./hook";
-import { submitEventForm } from "../../store/request/actions";
+import { Form, Formik } from 'formik';
+import { eventValidationSchema } from './validationSchema';
+import './styles.css';
+import { NameInput } from './NameInput';
+import { EmailInput } from './EmailInput';
+import { DateInputWithPicker } from './DateInputWithPicker';
+import { SubmitButton } from './SubmitButton';
+import { ProgressIndicator } from './ProgressIndicator';
+import { IntroText } from './IntroHeader';
+import { useFormSubmit } from './hook';
+import { submitEventForm } from '../../store/request/actions';
 
 export interface EventFormValues {
   firstName: string,
@@ -24,10 +24,10 @@ const eventFormInitialValues: EventFormValues = {
   lastName: '',
   email: '',
   date: moment(),
-}
+};
 
 export const EventForm: React.FC = () => {
-  const onFormSubmit = useFormSubmit(submitEventForm)
+  const onFormSubmit = useFormSubmit(submitEventForm);
 
   return (
     <Formik<EventFormValues>
@@ -62,5 +62,5 @@ export const EventForm: React.FC = () => {
         </Form>
       )}
     </Formik>
-  )
-}
+  );
+};

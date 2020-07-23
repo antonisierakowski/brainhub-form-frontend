@@ -1,12 +1,12 @@
 import * as yup from 'yup';
-import { EventFormValues } from "./index";
-import { MAX_NAME_LENGTH, MIN_NAME_LENGTH } from "../../constants";
+import { EventFormValues } from './index';
+import { MAX_NAME_LENGTH, MIN_NAME_LENGTH } from '../../constants';
 import {
   createNameTooLongMessage,
   createNameTooShortMessage,
   fieldIsRequiredMessage,
-  validEmailMessage
-} from "./validationMessages";
+  validEmailMessage,
+} from './validationMessages';
 
 const nameValidation = (humanReadableFieldName: string) => yup
   .string()
@@ -24,5 +24,5 @@ export const eventValidationSchema: yup.ObjectSchema = yup
       .email(validEmailMessage)
       .required(fieldIsRequiredMessage),
     date: yup
-      .object()
+      .object(),
   });

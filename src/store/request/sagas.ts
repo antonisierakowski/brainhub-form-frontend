@@ -1,11 +1,11 @@
-import { put, takeEvery } from "redux-saga/effects";
-import { SUBMIT_EVENT_FORM } from "./constants";
-import { Action } from "../types";
-import { SubmitEventFormPayload } from "./actions";
-import httpClient from "../../services/httpClient";
-import { createNotification } from "../notifications/actions";
+import { put, takeEvery } from 'redux-saga/effects';
+import { SUBMIT_EVENT_FORM } from './constants';
+import { Action } from '../types';
+import { SubmitEventFormPayload } from './actions';
+import httpClient from '../../services/httpClient';
+import { createNotification } from '../notifications/actions';
 import * as exceptions from '../../services/httpClient/exceptions';
-import { NotificationType } from "../notifications/model";
+import { NotificationType } from '../notifications/model';
 import * as notificationMessages from '../../constants/notificationMessages';
 
 export function* requestSagas() {
@@ -14,14 +14,14 @@ export function* requestSagas() {
 
 function* onSubmitEvent(action: Action<SubmitEventFormPayload>) {
   try {
-    yield httpClient.submitEvent(action.payload)
+    yield httpClient.submitEvent(action.payload);
     yield put(createNotification({
       notificationType: NotificationType.SUCCESS,
       textContent: notificationMessages.succesfulSubmitMsg,
     }));
 
   } catch(error) {
-    yield handleRequestError(error)
+    yield handleRequestError(error);
   }
 }
 

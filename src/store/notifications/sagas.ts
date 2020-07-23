@@ -1,8 +1,8 @@
-import { CREATE_NOTIFICATION } from "./constants";
-import { Action } from "../types";
-import { CreateNotificationPayload, createNotificationSuccess } from "./actions";
-import shortid from 'shortid'
-import { takeEvery, put } from "redux-saga/effects";
+import { CREATE_NOTIFICATION } from './constants';
+import { Action } from '../types';
+import { CreateNotificationPayload, createNotificationSuccess } from './actions';
+import shortid from 'shortid';
+import { takeEvery, put } from 'redux-saga/effects';
 
 export function* notificationSaga() {
   yield takeEvery(CREATE_NOTIFICATION, onCreateNotification);
@@ -14,5 +14,5 @@ function* onCreateNotification(action: Action<CreateNotificationPayload>) {
   yield put(createNotificationSuccess({
     ...action.payload,
     id,
-  }))
+  }));
 }

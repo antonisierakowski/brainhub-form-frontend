@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { RootComponent } from "./root";
+import { RootComponent } from './root';
 
 ReactDOM.render(
   <RootComponent />,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 

@@ -1,7 +1,7 @@
-import { Reducer } from "react";
-import { Action } from "../types";
-import { CREATE_NOTIFICATION_SUCCESS, REMOVE_NOTIFICATION } from "./constants";
-import { Notification } from './model'
+import { Reducer } from 'react';
+import { Action } from '../types';
+import { CREATE_NOTIFICATION_SUCCESS, REMOVE_NOTIFICATION } from './constants';
+import { Notification } from './model';
 
 export interface NotificationState {
   notifications: Notification[]
@@ -9,7 +9,7 @@ export interface NotificationState {
 
 const initialState: NotificationState = {
   notifications: [],
-}
+};
 
 export const notificationsReducer: Reducer<NotificationState, Action> = (state: NotificationState = initialState, action: Action) => {
   switch (action.type) {
@@ -23,13 +23,13 @@ export const notificationsReducer: Reducer<NotificationState, Action> = (state: 
     }
     case REMOVE_NOTIFICATION: {
       const { id } = action.payload;
-      const updatedNotifications = state.notifications.filter(notification => notification.id !== id)
+      const updatedNotifications = state.notifications.filter(notification => notification.id !== id);
       return {
         notifications: updatedNotifications,
-      }
+      };
     }
     default: {
-      return state
+      return state;
     }
   }
-}
+};

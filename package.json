@@ -34,10 +34,12 @@
     "yup": "^0.29.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "env EXTEND_ESLINT=true react-scripts start",
+    "build": "env EXTEND_ESLINT=true react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "check-code": "eslint './src/**/*.{ts,tsx}'",
+    "fix-code": "yarn check-code --fix"
   },
   "eslintConfig": {
     "extends": "react-app"

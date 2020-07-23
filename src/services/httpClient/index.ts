@@ -1,6 +1,6 @@
-import { BACKEND_DOMAIN } from "../../constants";
+import { BACKEND_DOMAIN } from '../../constants';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { EventFormValues } from "../../components/EventForm";
+import { EventFormValues } from '../../components/EventForm';
 import * as exceptions from './exceptions';
 
 export enum StatusCode {
@@ -49,7 +49,7 @@ class HttpClient {
   }
 
   private async post<TBody = any, TResponse = any>(
-    url: string, body?: TBody
+    url: string, body?: TBody,
   ): Promise<TResponse> {
     try {
       const response = await this.axiosInstance.post(url, body);
@@ -58,7 +58,7 @@ class HttpClient {
       if (!error.response) {
         throw new exceptions.NoApiResponseError();
       }
-      this.throwBasedOnStatusCode(error.response)
+      this.throwBasedOnStatusCode(error.response);
     }
   }
 
