@@ -2,7 +2,6 @@ import { BACKEND_DOMAIN } from "../../constants";
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { EventFormValues } from "../../components/EventForm";
 import * as exceptions from './exceptions';
-import { axiosConfig } from "./config";
 
 export enum StatusCode {
   OK = 200,
@@ -34,10 +33,7 @@ class HttpClient {
     });
   }
 
-  private async handleResponse(response: AxiosResponse) {
-    if (!response) {
-      throw new exceptions.NoApiResponseError();
-    }
+  private throwBasedOnStatusCode(response: AxiosResponse) {
     switch (response.status) {
       case StatusCode.OK: {
         return response;
@@ -54,9 +50,16 @@ class HttpClient {
 
   private async post<TBody = any, TResponse = any>(
     url: string, body?: TBody
-  ): Promise<AxiosResponse<TResponse>> {
-    const response = await this.axiosInstance.post(url, body)
-    return this.handleResponse(response)
+  ): Promise<TResponse> {
+    try {
+      const response = await this.axiosInstance.post(url, body);
+      return response.data;
+    } catch(error) {
+      if (!error.response) {
+        throw new exceptions.NoApiResponseError();
+      }
+      this.throwBasedOnStatusCode(error.response)
+    }
   }
 
   async submitEvent(event: EventFormValues): Promise<void> {

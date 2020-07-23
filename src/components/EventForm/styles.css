@@ -1,13 +1,6 @@
-.container {
-    width: 30%;
-    height: 50vh;
-}
-
 .eventForm {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 15px;
     height: 100%;
-    /*box-shadow: 0px 0px 31px -8px rgba(0,0,0,0.75);*/
 }

@@ -21,6 +21,7 @@ export const Notification: React.FC<Props> = ({ id }) => {
         </Typography>
       </div>
       <Close
+        className="closeIcon"
         onClick={onClose}
       />
     </Card>

@@ -31,39 +31,37 @@ export const EventForm: React.FC = () => {
   const onFormSubmit = useFormSubmit(submitEventForm)
 
   return (
-    <Paper elevation={3} className="container">
-      <Formik<EventFormValues>
-        validationSchema={eventValidationSchema}
-        initialValues={eventFormInitialValues}
-        onSubmit={onFormSubmit}
-      >
-        {({ submitForm, isSubmitting }) => (
-          <Form className="eventForm">
-            <IntroText />
-            <NameInput
-              label="First name"
-              name="firstName"
-            />
-            <NameInput
-              label="Last name"
-              name="lastName"
-            />
-            <EmailInput
-              name="email"
-              label="Email"
-            />
-            <DateInputWithPicker
-              name="date"
-              label="Event Date"
-            />
-            <ProgressIndicator isActive={isSubmitting} />
-            <SubmitButton
-              onSubmit={submitForm}
-              isSubmitting={isSubmitting}
-            />
-          </Form>
-        )}
-      </Formik>
-    </Paper>
+    <Formik<EventFormValues>
+      validationSchema={eventValidationSchema}
+      initialValues={eventFormInitialValues}
+      onSubmit={onFormSubmit}
+    >
+      {({ submitForm, isSubmitting }) => (
+        <Form className="eventForm">
+          <IntroText />
+          <NameInput
+            label="First name"
+            name="firstName"
+          />
+          <NameInput
+            label="Last name"
+            name="lastName"
+          />
+          <EmailInput
+            name="email"
+            label="Email"
+          />
+          <DateInputWithPicker
+            name="date"
+            label="Event Date"
+          />
+          <ProgressIndicator isActive={isSubmitting} />
+          <SubmitButton
+            onSubmit={submitForm}
+            isSubmitting={isSubmitting}
+          />
+        </Form>
+      )}
+    </Formik>
   )
 }
