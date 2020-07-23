@@ -1,5 +1,5 @@
 import { BACKEND_DOMAIN } from "../../constants";
-import { AxiosInstance, axios, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { EventFormValues } from "../../components/EventForm";
 
 export enum StatusCode {
