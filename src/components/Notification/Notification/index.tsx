@@ -2,11 +2,7 @@ import { Error, Done, Info, Close } from '@material-ui/icons';
 import React from "react";
 import { Card, Typography } from "@material-ui/core";
 import "./styles.css"
-
-export enum NotificationType {
-  SUCCESS = 'success',
-  FAILURE = 'failure',
-}
+import { NotificationType } from "../../../store/notifications/model";
 
 type Props = {
   type: NotificationType
