@@ -1,22 +1,28 @@
 import * as yup from 'yup';
 import { EventFormValues } from "./index";
+import { MAX_NAME_LENGTH, MIN_NAME_LENGTH } from "../../constants";
+import {
+  createNameTooLongMessage,
+  createNameTooShortMessage,
+  fieldIsRequiredMessage,
+  validEmailMessage
+} from "./validationMessages";
 
-const nameValidation = yup
+const nameValidation = (humanReadableFieldName: string) => yup
   .string()
-  .min(3)
-  .max(30)
-  .required();
+  .min(MIN_NAME_LENGTH, createNameTooShortMessage(humanReadableFieldName))
+  .max(MAX_NAME_LENGTH, createNameTooLongMessage(humanReadableFieldName))
+  .required(fieldIsRequiredMessage);
 
 export const eventValidationSchema: yup.ObjectSchema = yup
   .object()
   .shape<EventFormValues>({
-    firstName: nameValidation,
-    lastName: nameValidation,
+    firstName: nameValidation('First name'),
+    lastName: nameValidation('Last name'),
     email: yup
       .string()
-      .email()
-      .required(),
-    date: yup // todo: integrate with moment.js
+      .email(validEmailMessage)
+      .required(fieldIsRequiredMessage),
+    date: yup
       .object()
   });
-

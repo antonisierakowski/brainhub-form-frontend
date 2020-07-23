@@ -13,6 +13,9 @@ export function SubmitButton<TData>({onSubmit, isSubmitting}: Props) {
       color="primary"
       disabled={isSubmitting}
       onClick={onSubmit}
+      className="submitButton"
+      classes={{ root: 'submitButton' }}
+
     >
       Submit
     </Button>
