@@ -2,7 +2,6 @@ import React from "react";
 import moment from 'moment';
 import { Form, Formik } from "formik";
 import { eventValidationSchema } from "./validationSchema";
-import { Paper } from "@material-ui/core";
 import "./styles.css"
 import { NameInput } from "./NameInput";
 import { EmailInput } from "./EmailInput";
