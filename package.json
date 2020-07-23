@@ -20,6 +20,7 @@
     "@types/testing-library__dom": "^7.5.0",
     "@types/yup": "^0.29.3",
     "axios": "^0.19.2",
+    "axios-mock-adapter": "^1.18.2",
     "formik": "^2.1.5",
     "formik-material-ui": "^2.0.1",
     "formik-material-ui-pickers": "^0.0.10",

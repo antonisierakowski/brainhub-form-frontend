@@ -1,23 +1,20 @@
 import { BACKEND_DOMAIN } from '../../constants';
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import * as Axios from 'axios';
 import * as exceptions from './exceptions';
 import { EventModel } from '../../store/request/model';
+import { ApiResponse, StatusCode } from './types';
 
-export enum StatusCode {
-  OK = 200,
-  UNPROCESSABLE_ENTITY = 422,
-  INTERNAL_ERROR = 500,
-}
-
-export interface ApiResponse<TBody> {
-  status: StatusCode,
-  response: TBody,
-}
+export const axiosInstance = Axios.default.create({
+  baseURL: BACKEND_DOMAIN,
+});
 
 export class HttpClient {
   private static instance: HttpClient;
-  private axiosInstance: AxiosInstance;
-  private readonly domain = BACKEND_DOMAIN;
+  private axiosInstance: Axios.AxiosInstance;
+
+  private constructor() {
+    this.axiosInstance = axiosInstance;
+  }
 
   static getInstance(): HttpClient {
     if (!HttpClient.instance) {
@@ -27,13 +24,7 @@ export class HttpClient {
     return HttpClient.instance;
   }
 
-  private constructor() {
-    this.axiosInstance = axios.create({
-      baseURL: this.domain,
-    });
-  }
-
-  private throwBasedOnStatusCode(response: AxiosResponse) {
+  private throwBasedOnStatusCode(response: Axios.AxiosResponse) {
     switch (response.status) {
       case StatusCode.OK: {
         return response;
@@ -48,7 +39,7 @@ export class HttpClient {
     }
   }
 
-  private async post<TBody = any, TResponse = any>(
+  private async post<TBody = any, TResponse = ApiResponse>(
     url: string, body?: TBody,
   ): Promise<TResponse> {
     try {
@@ -62,9 +53,9 @@ export class HttpClient {
     }
   }
 
-  async submitEvent(event: EventModel): Promise<void> {
+  submitEvent = async (event: EventModel): Promise<ApiResponse> => {
     const endpoint = '/event';
-    await this.post(endpoint, event);
+    return await this.post<EventModel>(endpoint, event);
   }
 
 }
