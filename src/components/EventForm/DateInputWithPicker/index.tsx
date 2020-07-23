@@ -3,8 +3,8 @@ import { Field } from 'formik';
 import { DatePicker } from 'formik-material-ui-pickers';
 
 type Props = {
-  name: string,
-  label: string,
+  name: string;
+  label: string;
 }
 
 export const DateInputWithPicker: React.FC<Props> = ({ name, label }: Props): React.ReactElement => (

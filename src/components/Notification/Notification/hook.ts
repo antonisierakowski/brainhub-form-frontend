@@ -6,8 +6,8 @@ import { removeNotification } from '../../../store/notifications/actions';
 import { useCallback } from 'react';
 
 export interface UseNotification {
-  notification: Notification,
-  onClose: () => void
+  notification: Notification;
+  onClose: () => void;
 }
 
 export const useNotification = (id: string): UseNotification => {

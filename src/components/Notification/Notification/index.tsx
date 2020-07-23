@@ -6,7 +6,7 @@ import { NotificationType } from '../../../store/notifications/model';
 import { useNotification } from './hook';
 
 type Props = {
-  id: string,
+  id: string;
 }
 
 export const Notification: React.FC<Props> = ({ id }) => {

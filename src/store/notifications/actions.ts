@@ -4,8 +4,8 @@ import { Action } from '../types';
 import { createAction } from '../utils';
 
 export interface CreateNotificationPayload {
-  notificationType: NotificationType,
-  textContent: string,
+  notificationType: NotificationType;
+  textContent: string;
 }
 
 export const createNotification = (
@@ -16,9 +16,9 @@ export const createNotification = (
 );
 
 export interface CreateNotificationSuccessPayload {
-  notificationType: NotificationType,
-  textContent: string,
-  id: string,
+  notificationType: NotificationType;
+  textContent: string;
+  id: string;
 }
 
 export const createNotificationSuccess = (
@@ -29,7 +29,7 @@ export const createNotificationSuccess = (
 );
 
 export interface RemoveNotificationPayload {
-  id: string,
+  id: string;
 }
 
 export const removeNotification = (

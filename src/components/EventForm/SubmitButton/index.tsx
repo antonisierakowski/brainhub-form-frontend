@@ -2,11 +2,11 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 
 type Props = {
-  onSubmit: () => void,
-  isSubmitting: boolean,
+  onSubmit: () => void;
+  isSubmitting: boolean;
 }
 
-export function SubmitButton<TData>({ onSubmit, isSubmitting }: Props) {
+export function SubmitButton({ onSubmit, isSubmitting }: Props) {
   return (
     <Button
       variant="contained"

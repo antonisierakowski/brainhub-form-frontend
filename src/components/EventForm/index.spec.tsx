@@ -1,3 +1,4 @@
+// import React from 'react';
 // all integration tests
 
 // click on date should open picker

@@ -10,7 +10,7 @@ type ActionCreator<TValues> = (values: TValues) => Action<TValues>
 export function useFormSubmit<TValues>(actionCreator: ActionCreator<TValues>): OnFormSubmit<TValues> {
   const dispatch = useDispatch();
 
-  const onFormSubmit = useCallback((values: TValues, formikHelpers: FormikHelpers<TValues>) => (
+  const onFormSubmit = useCallback((values: TValues) => (
     dispatch(
       actionCreator(values),
     )

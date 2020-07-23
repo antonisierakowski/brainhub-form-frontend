@@ -7,7 +7,7 @@ import { Action } from './types';
 import rootSaga from './rootSaga';
 
 export interface RootState {
-  notificationsState: NotificationState,
+  notificationsState: NotificationState;
 }
 
 const sagaMiddleware = createSagaMiddleware();

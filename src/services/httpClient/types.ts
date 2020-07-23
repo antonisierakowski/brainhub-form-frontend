@@ -5,6 +5,6 @@ export enum StatusCode {
 }
 
 export interface ApiResponse<TBody = any> {
-  status: StatusCode,
-  response: TBody,
+  status: StatusCode;
+  response: TBody;
 }

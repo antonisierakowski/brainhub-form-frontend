@@ -13,10 +13,10 @@ import { useFormSubmit } from './hook';
 import { submitEventForm } from '../../store/request/actions';
 
 export interface EventFormValues {
-  firstName: string,
-  lastName: string,
-  email: string,
-  date: moment.Moment,
+  firstName: string;
+  lastName: string;
+  email: string;
+  date: moment.Moment;
 }
 
 const eventFormInitialValues: EventFormValues = {

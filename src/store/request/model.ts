@@ -1,6 +1,6 @@
 export interface EventModel {
-  firstName: string,
-  lastName: string,
-  email: string,
-  date: string,
+  firstName: string;
+  lastName: string;
+  email: string;
+  date: string;
 }

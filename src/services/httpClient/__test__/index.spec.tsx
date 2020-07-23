@@ -19,9 +19,7 @@ describe('HttpClient instance', () => {
 
   describe('instance\'s submitEvent method', () => {
     it('should call axios post method', async () => {
-      const mockFn = jest.fn();
       mock.onPost('/event').reply(200, { message: 'ok' });
-
       const instance = HttpClient.getInstance();
       await instance.submitEvent(null);
       await expect(await instance.submitEvent(null))

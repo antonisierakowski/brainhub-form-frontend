@@ -4,7 +4,7 @@ import { CREATE_NOTIFICATION_SUCCESS, REMOVE_NOTIFICATION } from './constants';
 import { Notification } from './model';
 
 export interface NotificationState {
-  notifications: Notification[]
+  notifications: Notification[];
 }
 
 const initialState: NotificationState = {
