@@ -15,6 +15,7 @@ export function SubmitButton({ onSubmit, isSubmitting }: Props) {
       onClick={onSubmit}
       className="submitButton"
       classes={{ root: 'submitButton' }}
+      data-testid="submitButton"
     >
       Submit
     </Button>

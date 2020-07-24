@@ -2,15 +2,15 @@ import { eventValidationSchema } from './validationSchema';
 import { EventFormValues } from './index';
 import moment from 'moment';
 
-const thirtyOneCharacters = '1234567890123456789012345678901';
-const nameValid = 'tester';
-const nameTooShort = 'te';
-const nameTooLong = thirtyOneCharacters;
-const emailValid = 'tester@test.com';
-const emailInvalid = 'inv@lid';
+export const thirtyOneCharacters = '1234567890123456789012345678901';
+export const nameValid = 'tester';
+export const nameTooShort = 'te';
+export const nameTooLong = thirtyOneCharacters;
+export const emailValid = 'tester@test.com';
+export const emailInvalid = 'inv@lid';
 export const exampleDateAsString = '12-12-2222';
-const dateValid = moment(exampleDateAsString);
-const dateInvalid = '12.12.12';
+export const dateValid = moment(exampleDateAsString);
+export const dateInvalid = '12.12.12';
 export const validEventFixture: EventFormValues = {
   date: dateValid,
   email: emailValid,

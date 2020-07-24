@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { RootComponent } from './root';
+import { createRootComponent } from './createRootComponent';
+import App from './components/App';
 
-ReactDOM.render(<RootComponent />, document.getElementById('root'));
+ReactDOM.render(createRootComponent(<App />), document.getElementById('root'));
