@@ -1,8 +1,8 @@
 import React from 'react';
-import { EventForm } from "./index";
-import { render, RenderResult, fireEvent } from '@testing-library/react';
-import { RootComponent } from "../../root";
-import { act } from "react-dom/test-utils";
+import { EventForm } from './index';
+import { render, RenderResult, fireEvent, wait } from '@testing-library/react';
+import { RootComponent } from '../../root';
+import { act } from 'react-dom/test-utils';
 
 let renderResult: RenderResult;
 
@@ -12,21 +12,20 @@ beforeEach(() => {
       // @ts-ignore
       <RootComponent>
         <EventForm />
-      </RootComponent>
+      </RootComponent>,
     );
-  })
-})
+  });
+});
 
 it('should match to generated snapshot', () => {
   expect(renderResult.asFragment).toMatchSnapshot();
 });
 
-it('should validate all fields on submit click', () => {
-  act(() => {
-    const submitButton = renderResult.getByText('Submit')
+it('should validate all fields on submit click', async () => {
+  await act(() => {
+    const submitButton = renderResult.getByText('Submit');
+    console.log(submitButton);
     fireEvent.click(submitButton);
-
-    expect
   });
 });
 

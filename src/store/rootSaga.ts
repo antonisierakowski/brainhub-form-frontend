@@ -3,8 +3,5 @@ import { notificationSaga } from './notifications/sagas';
 import { requestSagas } from './request/sagas';
 
 export default function* rootSaga() {
-  yield all([
-    notificationSaga(),
-    requestSagas(),
-  ]);
+  yield all([notificationSaga(), requestSagas()]);
 }

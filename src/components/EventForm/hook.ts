@@ -3,18 +3,22 @@ import { useCallback } from 'react';
 import { FormikHelpers } from 'formik';
 import { Action } from '../../store/types';
 
-type OnFormSubmit<TValues> = (values: TValues, formikHelpers: FormikHelpers<TValues>) => void
+type OnFormSubmit<TValues> = (
+  values: TValues,
+  formikHelpers: FormikHelpers<TValues>,
+) => void;
 
-type ActionCreator<TValues> = (values: TValues) => Action<TValues>
+type ActionCreator<TValues> = (values: TValues) => Action<TValues>;
 
-export function useFormSubmit<TValues>(actionCreator: ActionCreator<TValues>): OnFormSubmit<TValues> {
+export function useFormSubmit<TValues>(
+  actionCreator: ActionCreator<TValues>,
+): OnFormSubmit<TValues> {
   const dispatch = useDispatch();
 
-  const onFormSubmit = useCallback((values: TValues) => (
-    dispatch(
-      actionCreator(values),
-    )
-  ), [dispatch, actionCreator]);
+  const onFormSubmit = useCallback(
+    (values: TValues) => dispatch(actionCreator(values)),
+    [dispatch, actionCreator],
+  );
 
   return onFormSubmit;
 }

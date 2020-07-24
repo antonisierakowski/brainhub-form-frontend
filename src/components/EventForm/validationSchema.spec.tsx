@@ -66,52 +66,30 @@ describe('validationSchema for event form values', () => {
   const isValid = eventValidationSchema.isValid.bind(eventValidationSchema);
 
   it('should fail if any of the properties are missing', async () => {
-    expect(
-      await isValid(missingDate),
-    ).toBeFalsy();
-    expect(
-      await isValid(missingEmail),
-    ).toBeFalsy();
-    expect(
-      await isValid(missingFirstName),
-    ).toBeFalsy();
-    expect(
-      await isValid(missingLastName),
-    ).toBeFalsy();
+    expect(await isValid(missingDate)).toBeFalsy();
+    expect(await isValid(missingEmail)).toBeFalsy();
+    expect(await isValid(missingFirstName)).toBeFalsy();
+    expect(await isValid(missingLastName)).toBeFalsy();
   });
 
   it('should fail if firstName or lastName are not strings of 3-30 characters long', async () => {
-    expect(
-      await isValid(firstNameTooLong),
-    ).toBeFalsy();
-    expect(
-      await isValid(firstNameTooShort),
-    ).toBeFalsy();
-    expect(
-      await isValid(lastNameTooLong),
-    ).toBeFalsy();
-    expect(
-      await isValid(lastNameTooShort),
-    ).toBeFalsy();
+    expect(await isValid(firstNameTooLong)).toBeFalsy();
+    expect(await isValid(firstNameTooShort)).toBeFalsy();
+    expect(await isValid(lastNameTooLong)).toBeFalsy();
+    expect(await isValid(lastNameTooShort)).toBeFalsy();
   });
 
   it('should fail if email is not valid', async () => {
-    expect(
-      await isValid(allValidExceptEmail),
-    ).toBeFalsy();
+    expect(await isValid(allValidExceptEmail)).toBeFalsy();
   });
 
   it('should fail if date is not in a valid format', async () => {
-    expect(
-      await isValid(allValidExceptDate),
-    ).toBeFalsy();
+    expect(await isValid(allValidExceptDate)).toBeFalsy();
   });
 
   it('should succeed otherwise', async () => {
     const validationResult = await isValid(validEventFixture);
 
-    expect(
-      validationResult,
-    ).toBeTruthy();
+    expect(validationResult).toBeTruthy();
   });
 });

@@ -12,9 +12,7 @@ export interface RootState {
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middleware = composeWithDevTools(
-  applyMiddleware(sagaMiddleware),
-);
+const middleware = composeWithDevTools(applyMiddleware(sagaMiddleware));
 
 export const store: Store<RootState, Action> = createStore(
   rootReducer,

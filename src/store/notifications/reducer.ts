@@ -11,19 +11,21 @@ const initialState: NotificationState = {
   notifications: [],
 };
 
-export const notificationsReducer: Reducer<NotificationState, Action> = (state: NotificationState = initialState, action: Action) => {
+export const notificationsReducer: Reducer<NotificationState, Action> = (
+  state: NotificationState = initialState,
+  action: Action,
+) => {
   switch (action.type) {
     case CREATE_NOTIFICATION_SUCCESS: {
       return {
-        notifications: [
-          ...state.notifications,
-          { ...action.payload },
-        ],
+        notifications: [...state.notifications, { ...action.payload }],
       };
     }
     case REMOVE_NOTIFICATION: {
       const { id } = action.payload;
-      const updatedNotifications = state.notifications.filter(notification => notification.id !== id);
+      const updatedNotifications = state.notifications.filter(
+        notification => notification.id !== id,
+      );
       return {
         notifications: updatedNotifications,
       };

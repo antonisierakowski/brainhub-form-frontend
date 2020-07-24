@@ -1,16 +1,15 @@
 .App {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-    width: 300px;
-    height: 55vh;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
+  width: 300px;
+  height: 55vh;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
 }
-

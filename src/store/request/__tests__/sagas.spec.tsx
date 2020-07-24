@@ -1,6 +1,13 @@
-import { createFailureNotification, handleRequestError, onSubmitEvent } from '../sagas';
+import {
+  createFailureNotification,
+  handleRequestError,
+  onSubmitEvent,
+} from '../sagas';
 import { SUBMIT_EVENT_FORM } from '../constants';
-import { exampleDateAsString, validEventFixture } from '../../../components/EventForm/validationSchema.spec';
+import {
+  exampleDateAsString,
+  validEventFixture,
+} from '../../../components/EventForm/validationSchema.spec';
 import httpClient from '../../../services/httpClient';
 import { call, put } from 'redux-saga/effects';
 import { createNotification } from '../../notifications/actions';
@@ -16,9 +23,7 @@ describe('onSubmitEvent saga', () => {
   const gen = onSubmitEvent(action);
 
   it('should format the date and call httpClient submitEvent method', () => {
-    expect(
-      gen.next().value,
-    ).toEqual(
+    expect(gen.next().value).toEqual(
       call(httpClient.submitEvent, {
         ...validEventFixture,
         date: exampleDateAsString,
@@ -26,13 +31,13 @@ describe('onSubmitEvent saga', () => {
     );
   });
   it('should dispatch createNotification if successful', () => {
-    expect(
-      gen.next().value,
-    ).toEqual(
-      put(createNotification({
-        notificationType: NotificationType.SUCCESS,
-        textContent: notificationMessages.succesfulSubmitMsg,
-      })),
+    expect(gen.next().value).toEqual(
+      put(
+        createNotification({
+          notificationType: NotificationType.SUCCESS,
+          textContent: notificationMessages.succesfulSubmitMsg,
+        }),
+      ),
     );
 
     expect(gen.next().done).toBeTruthy();
@@ -47,11 +52,7 @@ describe('onSubmitEvent saga', () => {
     const gen = onSubmitEvent(action);
     gen.next();
 
-    expect(
-      gen.throw(error).value,
-    ).toEqual(
-      handleRequestError(error),
-    );
+    expect(gen.throw(error).value).toEqual(handleRequestError(error));
 
     expect(gen.next().done).toBeTruthy();
   });
@@ -61,9 +62,7 @@ describe('handleRequestError function', () => {
   it('should dispatch notification with appropriate message if ApiValidationError is thrown', () => {
     const gen = handleRequestError(new exceptions.ApiValidationError());
 
-    expect(
-      gen.next().value,
-    ).toEqual(
+    expect(gen.next().value).toEqual(
       call(createFailureNotification, notificationMessages.submitFailureMsg),
     );
 
@@ -72,9 +71,7 @@ describe('handleRequestError function', () => {
   it('should dispatch notification with appropriate message if NoApiResponseError is thrown', () => {
     const gen = handleRequestError(new exceptions.NoApiResponseError());
 
-    expect(
-      gen.next().value,
-    ).toEqual(
+    expect(gen.next().value).toEqual(
       call(createFailureNotification, notificationMessages.noConnectionMsg),
     );
 
@@ -83,9 +80,7 @@ describe('handleRequestError function', () => {
   it('should dispatch notification with appropriate message if ApiInternalError is thrown', () => {
     const gen = handleRequestError(new exceptions.ApiInternalError());
 
-    expect(
-      gen.next().value,
-    ).toEqual(
+    expect(gen.next().value).toEqual(
       call(createFailureNotification, notificationMessages.internalErrorMsg),
     );
 
@@ -94,9 +89,7 @@ describe('handleRequestError function', () => {
   it('should dispatch notification with appropriate message otherwise', () => {
     const gen = handleRequestError(new Error());
 
-    expect(
-      gen.next().value,
-    ).toEqual(
+    expect(gen.next().value).toEqual(
       call(createFailureNotification, notificationMessages.internalErrorMsg),
     );
 

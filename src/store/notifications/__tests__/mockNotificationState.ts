@@ -7,11 +7,13 @@ export const mockNotificationState: NotificationState = {
       id: '1',
       notificationType: NotificationType.SUCCESS,
       textContent: 'test1',
-    }, {
+    },
+    {
       id: '2',
       notificationType: NotificationType.FAILURE,
       textContent: 'test2',
-    }, {
+    },
+    {
       id: '3',
       notificationType: NotificationType.FAILURE,
       textContent: 'test3',

@@ -8,9 +8,7 @@ import './index.css';
 
 export const RootComponent = (): React.ReactElement => (
   <React.StrictMode>
-    <Provider
-      store={store}
-    >
+    <Provider store={store}>
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <App />
       </MuiPickersUtilsProvider>

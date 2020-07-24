@@ -40,12 +40,13 @@ export class HttpClient {
   }
 
   private async post<TBody = any, TResponse = ApiResponse>(
-    url: string, body?: TBody,
+    url: string,
+    body?: TBody,
   ): Promise<TResponse> {
     try {
       const response = await this.axiosInstance.post(url, body);
       return response.data;
-    } catch(error) {
+    } catch (error) {
       if (!error.response) {
         throw new exceptions.NoApiResponseError();
       }
@@ -56,8 +57,7 @@ export class HttpClient {
   submitEvent = async (event: EventModel): Promise<ApiResponse> => {
     const endpoint = '/event';
     return await this.post<EventModel>(endpoint, event);
-  }
-
+  };
 }
 
 export default HttpClient.getInstance();

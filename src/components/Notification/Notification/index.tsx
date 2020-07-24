@@ -7,7 +7,7 @@ import { useNotification } from './hook';
 
 type Props = {
   id: string;
-}
+};
 
 export const Notification: React.FC<Props> = ({ id }) => {
   const { notification, onClose } = useNotification(id);
@@ -16,18 +16,12 @@ export const Notification: React.FC<Props> = ({ id }) => {
     <Card className="notification" elevation={3}>
       <div className="notificationBody">
         {getIconType(notification.notificationType)}
-        <Typography variant="subtitle2">
-          {notification.textContent}
-        </Typography>
+        <Typography variant="subtitle2">{notification.textContent}</Typography>
       </div>
-      <Close
-        className="closeIcon"
-        onClick={onClose}
-      />
+      <Close className="closeIcon" onClick={onClose} />
     </Card>
   );
 };
-
 
 const getIconType = (notificationType: NotificationType) => {
   switch (notificationType) {

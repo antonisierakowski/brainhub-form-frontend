@@ -13,15 +13,10 @@ describe('notificationsReducer', () => {
     };
 
     const expectedResult = {
-      notifications: [
-        ...mockNotificationState.notifications,
-        { test: 'test' },
-      ],
+      notifications: [...mockNotificationState.notifications, { test: 'test' }],
     };
 
-    expect(
-      notificationsReducer(mockNotificationState, action),
-    ).toEqual(
+    expect(notificationsReducer(mockNotificationState, action)).toEqual(
       expectedResult,
     );
   });
@@ -39,16 +34,15 @@ describe('notificationsReducer', () => {
           id: '2',
           notificationType: NotificationType.FAILURE,
           textContent: 'test2',
-        }, {
+        },
+        {
           id: '3',
           notificationType: NotificationType.FAILURE,
           textContent: 'test3',
         },
       ],
     };
-    expect(
-      notificationsReducer(mockNotificationState, action),
-    ).toEqual(
+    expect(notificationsReducer(mockNotificationState, action)).toEqual(
       expectedResult,
     );
   });
@@ -58,9 +52,7 @@ describe('notificationsReducer', () => {
       type: 'TEST',
     };
 
-    expect(
-      notificationsReducer(mockNotificationState, action),
-    ).toEqual(
+    expect(notificationsReducer(mockNotificationState, action)).toEqual(
       mockNotificationState,
     );
   });

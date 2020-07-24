@@ -21,12 +21,13 @@ export function* onSubmitEvent({ payload }: Action<SubmitEventFormPayload>) {
       date: payload.date.format(DATE_FORMAT),
     };
     yield call(httpClient.submitEvent, event);
-    yield put(createNotification({
-      notificationType: NotificationType.SUCCESS,
-      textContent: notificationMessages.succesfulSubmitMsg,
-    }));
-
-  } catch(error) {
+    yield put(
+      createNotification({
+        notificationType: NotificationType.SUCCESS,
+        textContent: notificationMessages.succesfulSubmitMsg,
+      }),
+    );
+  } catch (error) {
     yield handleRequestError(error);
   }
 }
@@ -34,24 +35,34 @@ export function* onSubmitEvent({ payload }: Action<SubmitEventFormPayload>) {
 export function* handleRequestError(error: Error) {
   switch (error.constructor) {
     case exceptions.ApiValidationError: {
-      yield call(createFailureNotification, notificationMessages.submitFailureMsg);
+      yield call(
+        createFailureNotification,
+        notificationMessages.submitFailureMsg,
+      );
       break;
     }
     case exceptions.NoApiResponseError: {
-      yield call(createFailureNotification, notificationMessages.noConnectionMsg);
+      yield call(
+        createFailureNotification,
+        notificationMessages.noConnectionMsg,
+      );
       break;
     }
     case exceptions.ApiInternalError:
     default: {
-      yield call(createFailureNotification, notificationMessages.internalErrorMsg);
-
+      yield call(
+        createFailureNotification,
+        notificationMessages.internalErrorMsg,
+      );
     }
   }
 }
 
 export function* createFailureNotification(message: string) {
-  yield put(createNotification({
-    notificationType: NotificationType.FAILURE,
-    textContent: message,
-  }));
+  yield put(
+    createNotification({
+      notificationType: NotificationType.FAILURE,
+      textContent: message,
+    }),
+  );
 }

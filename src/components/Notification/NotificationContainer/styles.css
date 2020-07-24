@@ -1,8 +1,8 @@
 .notificationContainer {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    padding: 40px;
-    z-index: 100;
-    pointer-events: none;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  padding: 40px;
+  z-index: 100;
+  pointer-events: none;
 }

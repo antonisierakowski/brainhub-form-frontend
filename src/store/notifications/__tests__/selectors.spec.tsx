@@ -3,12 +3,12 @@ import { rootStateMock } from '../../__tests__/rootStateMock';
 import { mockNotificationState } from './mockNotificationState';
 import { NotificationType } from '../model';
 
-describe('notifications selectors', () =>  {
+describe('notifications selectors', () => {
   describe('selectNotifications', () => {
     it('should return notifications state', () => {
-      expect(selectNotifications(
-        rootStateMock,
-      )).toEqual(mockNotificationState.notifications);
+      expect(selectNotifications(rootStateMock)).toEqual(
+        mockNotificationState.notifications,
+      );
     });
   });
   describe('selectNotification', () => {
@@ -18,9 +18,7 @@ describe('notifications selectors', () =>  {
         notificationType: NotificationType.SUCCESS,
         textContent: 'test1',
       };
-      expect(selectNotification(
-        rootStateMock, '1',
-      )).toEqual(expectedResult);
+      expect(selectNotification(rootStateMock, '1')).toEqual(expectedResult);
     });
   });
 });

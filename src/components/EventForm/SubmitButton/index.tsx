@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core';
 type Props = {
   onSubmit: () => void;
   isSubmitting: boolean;
-}
+};
 
 export function SubmitButton({ onSubmit, isSubmitting }: Props) {
   return (
@@ -15,7 +15,6 @@ export function SubmitButton({ onSubmit, isSubmitting }: Props) {
       onClick={onSubmit}
       className="submitButton"
       classes={{ root: 'submitButton' }}
-
     >
       Submit
     </Button>

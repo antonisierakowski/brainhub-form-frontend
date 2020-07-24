@@ -14,48 +14,46 @@ describe('HttpClient instance', () => {
       expect(firstCallInstance).toBe(secondCallInstance);
       expect(createAxiosInstanceSpy).toHaveBeenCalledTimes(1);
     });
-
   });
 
-  describe('instance\'s submitEvent method', () => {
+  describe("instance's submitEvent method", () => {
     it('should call axios post method', async () => {
       mock.onPost('/event').reply(200, { message: 'ok' });
       const instance = HttpClient.getInstance();
       await instance.submitEvent(null);
-      await expect(await instance.submitEvent(null))
-        .toEqual({ message: 'ok' });
+      await expect(await instance.submitEvent(null)).toEqual({ message: 'ok' });
     });
 
-    it('should throw NoApiResponseError if there\'s an error, but there\'s no response', async () => {
+    it("should throw NoApiResponseError if there's an error, but there's no response", async () => {
       mock.onPost('/event').networkError();
       const instance = HttpClient.getInstance();
-      await expect(instance.submitEvent(null))
-        .rejects
-        .toThrow(new exceptions.NoApiResponseError());
+      await expect(instance.submitEvent(null)).rejects.toThrow(
+        new exceptions.NoApiResponseError(),
+      );
     });
 
     it('should throw ApiValidationError if response status code is 422', async () => {
       mock.onPost('/event').reply(422);
       const instance = HttpClient.getInstance();
-      await expect(instance.submitEvent(null))
-        .rejects
-        .toThrow(new exceptions.ApiValidationError());
+      await expect(instance.submitEvent(null)).rejects.toThrow(
+        new exceptions.ApiValidationError(),
+      );
     });
 
     it('should throw ApiInternalError if response status code is 500', async () => {
       mock.onPost('/event').reply(500);
       const instance = HttpClient.getInstance();
-      await expect(instance.submitEvent(null))
-        .rejects
-        .toThrow(new exceptions.ApiInternalError());
+      await expect(instance.submitEvent(null)).rejects.toThrow(
+        new exceptions.ApiInternalError(),
+      );
     });
 
     it('should throw ApiInternalError if response status code is other than above but not 200', async () => {
       mock.onPost('/event').reply(404);
       const instance = HttpClient.getInstance();
-      await expect(instance.submitEvent(null))
-        .rejects
-        .toThrow(new exceptions.ApiInternalError());
+      await expect(instance.submitEvent(null)).rejects.toThrow(
+        new exceptions.ApiInternalError(),
+      );
     });
   });
 });

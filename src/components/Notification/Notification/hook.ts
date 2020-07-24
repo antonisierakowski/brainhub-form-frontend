@@ -11,17 +11,16 @@ export interface UseNotification {
 }
 
 export const useNotification = (id: string): UseNotification => {
-  const notification = useSelector(
-    (state: RootState) => selectNotification(state, id),
+  const notification = useSelector((state: RootState) =>
+    selectNotification(state, id),
   );
 
   const dispatch = useDispatch();
 
-  const onClose = useCallback(() => (
-    dispatch(
-      removeNotification({ id: notification.id }),
-    )
-  ), [dispatch, notification.id]);
+  const onClose = useCallback(
+    () => dispatch(removeNotification({ id: notification.id })),
+    [dispatch, notification.id],
+  );
 
   return {
     notification,

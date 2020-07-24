@@ -1,5 +1,9 @@
 import { NotificationType } from './model';
-import { CREATE_NOTIFICATION, CREATE_NOTIFICATION_SUCCESS, REMOVE_NOTIFICATION } from './constants';
+import {
+  CREATE_NOTIFICATION,
+  CREATE_NOTIFICATION_SUCCESS,
+  REMOVE_NOTIFICATION,
+} from './constants';
 import { Action } from '../types';
 import { createAction } from '../utils';
 
@@ -10,10 +14,8 @@ export interface CreateNotificationPayload {
 
 export const createNotification = (
   payload: CreateNotificationPayload,
-): Action<CreateNotificationPayload> => createAction(
-  CREATE_NOTIFICATION,
-  payload,
-);
+): Action<CreateNotificationPayload> =>
+  createAction(CREATE_NOTIFICATION, payload);
 
 export interface CreateNotificationSuccessPayload {
   notificationType: NotificationType;
@@ -23,10 +25,8 @@ export interface CreateNotificationSuccessPayload {
 
 export const createNotificationSuccess = (
   payload: CreateNotificationSuccessPayload,
-): Action<CreateNotificationSuccessPayload> => createAction(
-  CREATE_NOTIFICATION_SUCCESS,
-  payload,
-);
+): Action<CreateNotificationSuccessPayload> =>
+  createAction(CREATE_NOTIFICATION_SUCCESS, payload);
 
 export interface RemoveNotificationPayload {
   id: string;
@@ -34,7 +34,5 @@ export interface RemoveNotificationPayload {
 
 export const removeNotification = (
   payload: RemoveNotificationPayload,
-): Action<RemoveNotificationPayload> => createAction(
-  REMOVE_NOTIFICATION,
-  payload,
-);
+): Action<RemoveNotificationPayload> =>
+  createAction(REMOVE_NOTIFICATION, payload);

@@ -38,27 +38,12 @@ export const EventForm: React.FC = () => {
       {({ submitForm, isSubmitting }) => (
         <Form className="eventForm">
           <FormHeader />
-          <NameInput
-            label="First name"
-            name="firstName"
-          />
-          <NameInput
-            label="Last name"
-            name="lastName"
-          />
-          <EmailInput
-            name="email"
-            label="Email"
-          />
-          <DateInputWithPicker
-            name="date"
-            label="Event Date"
-          />
+          <NameInput label="First name" name="firstName" />
+          <NameInput label="Last name" name="lastName" />
+          <EmailInput name="email" label="Email" />
+          <DateInputWithPicker name="date" label="Event Date" />
           <ProgressIndicator isActive={isSubmitting} />
-          <SubmitButton
-            onSubmit={submitForm}
-            isSubmitting={isSubmitting}
-          />
+          <SubmitButton onSubmit={submitForm} isSubmitting={isSubmitting} />
         </Form>
       )}
     </Formik>

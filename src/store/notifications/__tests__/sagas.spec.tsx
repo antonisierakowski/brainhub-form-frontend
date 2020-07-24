@@ -19,16 +19,15 @@ describe('onCreateNotification saga', () => {
       },
     };
     const gen = onCreateNotification(action);
-    expect(
-      gen.next().value,
-    ).toEqual(
-      put(createNotificationSuccess({
-        notificationType: NotificationType.FAILURE,
-        textContent: 'test',
-        id: 'test_id',
-      })),
+    expect(gen.next().value).toEqual(
+      put(
+        createNotificationSuccess({
+          notificationType: NotificationType.FAILURE,
+          textContent: 'test',
+          id: 'test_id',
+        }),
+      ),
     );
-    expect(gen.next().done)
-      .toBeTruthy();
+    expect(gen.next().done).toBeTruthy();
   });
 });
