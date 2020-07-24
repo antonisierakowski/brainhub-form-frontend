@@ -1,5 +1,4 @@
 import { __axiosInstance, HttpClient } from '../index';
-import Axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import * as exceptions from '../exceptions';
 
@@ -7,12 +6,10 @@ const mock = new MockAdapter(__axiosInstance);
 
 describe('HttpClient instance', () => {
   describe('getInstance method', () => {
-    it('should return the same instance and instantiate axios only once', () => {
-      const createAxiosInstanceSpy = jest.spyOn(Axios, 'create');
+    it('should return the same instance', () => {
       const firstCallInstance = HttpClient.getInstance();
       const secondCallInstance = HttpClient.getInstance();
       expect(firstCallInstance).toBe(secondCallInstance);
-      expect(createAxiosInstanceSpy).toHaveBeenCalledTimes(1);
     });
   });
 
