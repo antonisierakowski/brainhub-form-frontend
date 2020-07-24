@@ -7,7 +7,7 @@ import {
 } from '@testing-library/react';
 import React from 'react';
 import { Notification } from '../index';
-import { rootStateFixture } from '../../../../store/rootStateFixture';
+import { rootStateFixture } from '../../../../store/fixtures/rootStateFixture';
 import { provideStore } from '../../../../store/utils';
 import { createPreloadedStore } from '../../../../store';
 

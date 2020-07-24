@@ -1,6 +1,6 @@
 import { selectNotification, selectNotifications } from '../selectors';
-import { rootStateFixture } from '../../rootStateFixture';
-import { notificationStateFixture } from '../notificationStateFixture';
+import { rootStateFixture } from '../../../fixtures/rootStateFixture';
+import { notificationStateFixture } from '../../../fixtures/notificationStateFixture';
 import { NotificationType } from '../model';
 
 describe('notifications selectors', () => {

@@ -7,13 +7,13 @@ import { SUBMIT_EVENT_FORM } from '../constants';
 import {
   exampleDateAsString,
   validEventFixture,
-} from '../../../components/EventForm/validationSchema.spec';
-import httpClient from '../../../services/httpClient';
+} from '../../../../components/EventForm/eventFixtures';
+import httpClient from '../../../../services/httpClient';
 import { call, put } from 'redux-saga/effects';
 import { createNotification } from '../../notifications/actions';
 import { NotificationType } from '../../notifications/model';
-import * as notificationMessages from '../../../constants/notificationMessages';
-import * as exceptions from '../../../services/httpClient/exceptions';
+import * as notificationMessages from '../../../../constants/notificationMessages';
+import * as exceptions from '../../../../services/httpClient/exceptions';
 
 describe('onSubmitEvent saga', () => {
   const action = {

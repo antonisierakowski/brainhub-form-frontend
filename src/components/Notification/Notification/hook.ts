@@ -1,8 +1,8 @@
-import { Notification } from '../../../store/notifications/model';
+import { Notification } from '../../../store/domain/notifications/model';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectNotification } from '../../../store/notifications/selectors';
+import { selectNotification } from '../../../store/domain/notifications/selectors';
 import { RootState } from '../../../store';
-import { removeNotification } from '../../../store/notifications/actions';
+import { removeNotification } from '../../../store/domain/notifications/actions';
 import { useCallback } from 'react';
 
 export interface UseNotification {

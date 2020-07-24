@@ -9,8 +9,8 @@ import {
 } from '@testing-library/react';
 import React from 'react';
 import { NotificationContainer } from '../index';
-import { notificationStateFixture } from '../../../../store/notifications/notificationStateFixture';
-import { rootStateFixture } from '../../../../store/rootStateFixture';
+import { notificationStateFixture } from '../../../../store/fixtures/notificationStateFixture';
+import { rootStateFixture } from '../../../../store/fixtures/rootStateFixture';
 import { provideStore } from '../../../../store/utils';
 import { createPreloadedStore } from '../../../../store';
 

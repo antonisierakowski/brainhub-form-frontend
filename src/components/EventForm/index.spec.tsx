@@ -9,7 +9,7 @@ import {
   nameTooLong,
   nameTooShort,
   validEventFixture,
-} from './validationSchema.spec';
+} from './eventFixtures';
 import httpClient from '../../services/httpClient/index';
 
 let renderResult: RenderResult;

@@ -1,5 +1,5 @@
 import { CREATE_NOTIFICATION } from './constants';
-import { Action } from '../types';
+import { Action } from '../../types';
 import {
   CreateNotificationPayload,
   createNotificationSuccess,

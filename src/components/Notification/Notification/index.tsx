@@ -2,7 +2,7 @@ import { Error, Done, Info, Close } from '@material-ui/icons';
 import React from 'react';
 import { Card, Typography } from '@material-ui/core';
 import './styles.css';
-import { NotificationType } from '../../../store/notifications/model';
+import { NotificationType } from '../../../store/domain/notifications/model';
 import { useNotification } from './hook';
 
 type Props = {

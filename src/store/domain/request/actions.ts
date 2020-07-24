@@ -1,6 +1,6 @@
-import { EventFormValues } from '../../components/EventForm';
-import { Action } from '../types';
-import { createAction } from '../utils';
+import { EventFormValues } from '../../../components/EventForm';
+import { Action } from '../../types';
+import { createAction } from '../../utils';
 import { SUBMIT_EVENT_FORM, SUBMIT_EVENT_FORM_SUCCESS } from './constants';
 
 export type SubmitEventFormPayload = EventFormValues;

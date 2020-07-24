@@ -1,14 +1,14 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
 import { SUBMIT_EVENT_FORM } from './constants';
-import { Action } from '../types';
+import { Action } from '../../types';
 import { SubmitEventFormPayload } from './actions';
-import httpClient from '../../services/httpClient';
+import httpClient from '../../../services/httpClient';
 import { createNotification } from '../notifications/actions';
-import * as exceptions from '../../services/httpClient/exceptions';
+import * as exceptions from '../../../services/httpClient/exceptions';
 import { NotificationType } from '../notifications/model';
-import * as notificationMessages from '../../constants/notificationMessages';
+import * as notificationMessages from '../../../constants/notificationMessages';
 import { EventModel } from './model';
-import { DATE_FORMAT } from '../../constants';
+import { DATE_FORMAT } from '../../../constants';
 
 export function* requestSagas() {
   yield takeEvery(SUBMIT_EVENT_FORM, onSubmitEvent);

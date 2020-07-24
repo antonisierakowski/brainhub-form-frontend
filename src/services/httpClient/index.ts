@@ -1,7 +1,7 @@
 import { BACKEND_DOMAIN } from '../../constants';
 import * as Axios from 'axios';
 import * as exceptions from './exceptions';
-import { EventModel } from '../../store/request/model';
+import { EventModel } from '../../store/domain/request/model';
 import { ApiResponse, StatusCode } from './types';
 
 export const __axiosInstance = Axios.default.create({

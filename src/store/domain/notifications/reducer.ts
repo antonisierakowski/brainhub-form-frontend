@@ -1,5 +1,5 @@
 import { Reducer } from 'react';
-import { Action } from '../types';
+import { Action } from '../../types';
 import { CREATE_NOTIFICATION_SUCCESS, REMOVE_NOTIFICATION } from './constants';
 import { Notification } from './model';
 

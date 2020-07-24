@@ -10,7 +10,7 @@ import { SubmitButton } from './SubmitButton';
 import { ProgressIndicator } from './ProgressIndicator';
 import { FormHeader } from './FormHeader';
 import { useFormSubmit } from './hook';
-import { submitEventForm } from '../../store/request/actions';
+import { submitEventForm } from '../../store/domain/request/actions';
 
 export interface EventFormValues {
   firstName: string;

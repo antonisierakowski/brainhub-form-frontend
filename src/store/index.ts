@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, Store } from 'redux';
 import { rootReducer } from './rootReducer';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { NotificationState } from './notifications/reducer';
+import { NotificationState } from './domain/notifications/reducer';
 import { Action } from './types';
 import rootSaga from './rootSaga';
 

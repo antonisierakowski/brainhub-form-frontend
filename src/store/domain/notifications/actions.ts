@@ -4,8 +4,8 @@ import {
   CREATE_NOTIFICATION_SUCCESS,
   REMOVE_NOTIFICATION,
 } from './constants';
-import { Action } from '../types';
-import { createAction } from '../utils';
+import { Action } from '../../types';
+import { createAction } from '../../utils';
 
 export interface CreateNotificationPayload {
   notificationType: NotificationType;

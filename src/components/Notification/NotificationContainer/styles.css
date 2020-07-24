@@ -5,4 +5,8 @@
   padding: 40px;
   z-index: 100;
   pointer-events: none;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  justify-content: flex-end;
 }

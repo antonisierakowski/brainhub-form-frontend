@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 import { useNotifications } from './hook';
 import { Notification } from '../Notification';
-import { Notification as NotificationInterface } from '../../../store/notifications/model';
+import { Notification as NotificationInterface } from '../../../store/domain/notifications/model';
 
 export const NotificationContainer: React.FC = () => {
   const notifications = useNotifications();

@@ -5,6 +5,7 @@
   align-items: center;
   margin-bottom: 15px;
   pointer-events: all;
+  width: 100%;
 }
 
 .notificationBody {

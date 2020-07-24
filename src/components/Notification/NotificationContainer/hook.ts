@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { selectNotifications } from '../../../store/notifications/selectors';
-import { Notification } from '../../../store/notifications/model';
+import { selectNotifications } from '../../../store/domain/notifications/selectors';
+import { Notification } from '../../../store/domain/notifications/model';
 
 export const useNotifications = (): Notification[] => {
   const notifications = useSelector(selectNotifications);
