@@ -1,7 +1,7 @@
 import { notificationsReducer, NotificationState } from '../reducer';
 import { NotificationType } from '../model';
 import { CREATE_NOTIFICATION_SUCCESS, REMOVE_NOTIFICATION } from '../constants';
-import { notificationStateFixture } from './notificationStateFixture';
+import { notificationStateFixture } from '../notificationStateFixture';
 
 describe('notificationsReducer', () => {
   it('should add notification on CREATE_NOTIFICATION_SUCCESS', () => {

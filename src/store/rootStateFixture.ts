@@ -1,5 +1,5 @@
 import { RootState } from './index';
-import { notificationStateFixture } from './notifications/__tests__/notificationStateFixture';
+import { notificationStateFixture } from './notifications/notificationStateFixture';
 
 export const rootStateFixture: RootState = {
   notificationsState: notificationStateFixture,

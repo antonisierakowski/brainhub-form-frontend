@@ -1,5 +1,5 @@
-import { NotificationState } from '../reducer';
-import { NotificationType } from '../model';
+import { NotificationState } from './reducer';
+import { NotificationType } from './model';
 
 export const notificationStateFixture: NotificationState = {
   notifications: [
