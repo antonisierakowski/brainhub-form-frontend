@@ -19,4 +19,8 @@ export const store: Store<RootState, Action> = createStore(
   middleware,
 );
 
+export const createPreloadedStore = (
+  state: RootState,
+): Store<RootState, Action> => createStore(rootReducer, state, middleware);
+
 sagaMiddleware.run(rootSaga);

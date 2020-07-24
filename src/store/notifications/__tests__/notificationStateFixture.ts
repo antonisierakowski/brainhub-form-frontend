@@ -1,7 +1,7 @@
 import { NotificationState } from '../reducer';
 import { NotificationType } from '../model';
 
-export const mockNotificationState: NotificationState = {
+export const notificationStateFixture: NotificationState = {
   notifications: [
     {
       id: '1',

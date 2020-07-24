@@ -13,12 +13,16 @@ export const Notification: React.FC<Props> = ({ id }) => {
   const { notification, onClose } = useNotification(id);
 
   return (
-    <Card className="notification" elevation={3}>
+    <Card className="notification" elevation={3} data-testid={id}>
       <div className="notificationBody">
         {getIconType(notification.notificationType)}
         <Typography variant="subtitle2">{notification.textContent}</Typography>
       </div>
-      <Close className="closeIcon" onClick={onClose} />
+      <Close
+        className="closeIcon"
+        onClick={onClose}
+        data-testid={`closeIcon_${id}`}
+      />
     </Card>
   );
 };

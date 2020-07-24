@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match to the generated snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiCard-root notification MuiPaper-elevation3 MuiPaper-rounded"
+    data-testid="1"
+  >
+    <div
+      class="notificationBody"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
+        />
+      </svg>
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle2"
+      >
+        test1
+      </h6>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root closeIcon"
+      data-testid="closeIcon_1"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;

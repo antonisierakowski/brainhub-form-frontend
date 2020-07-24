@@ -4,6 +4,7 @@ exports[`should match to the generated snapshot 1`] = `
 <DocumentFragment>
   <button
     class="MuiButtonBase-root MuiButton-root submitButton MuiButton-contained submitButton MuiButton-containedPrimary"
+    data-testid="submitButton"
     tabindex="0"
     type="button"
   >

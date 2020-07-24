@@ -1,13 +1,13 @@
 import { selectNotification, selectNotifications } from '../selectors';
-import { rootStateMock } from '../../__tests__/rootStateMock';
-import { mockNotificationState } from './mockNotificationState';
+import { rootStateFixture } from '../../rootStateFixture';
+import { notificationStateFixture } from './notificationStateFixture';
 import { NotificationType } from '../model';
 
 describe('notifications selectors', () => {
   describe('selectNotifications', () => {
     it('should return notifications state', () => {
-      expect(selectNotifications(rootStateMock)).toEqual(
-        mockNotificationState.notifications,
+      expect(selectNotifications(rootStateFixture)).toEqual(
+        notificationStateFixture.notifications,
       );
     });
   });
@@ -18,7 +18,7 @@ describe('notifications selectors', () => {
         notificationType: NotificationType.SUCCESS,
         textContent: 'test1',
       };
-      expect(selectNotification(rootStateMock, '1')).toEqual(expectedResult);
+      expect(selectNotification(rootStateFixture, '1')).toEqual(expectedResult);
     });
   });
 });

@@ -1,7 +1,7 @@
 import { notificationsReducer, NotificationState } from '../reducer';
 import { NotificationType } from '../model';
 import { CREATE_NOTIFICATION_SUCCESS, REMOVE_NOTIFICATION } from '../constants';
-import { mockNotificationState } from './mockNotificationState';
+import { notificationStateFixture } from './notificationStateFixture';
 
 describe('notificationsReducer', () => {
   it('should add notification on CREATE_NOTIFICATION_SUCCESS', () => {
@@ -13,10 +13,13 @@ describe('notificationsReducer', () => {
     };
 
     const expectedResult = {
-      notifications: [...mockNotificationState.notifications, { test: 'test' }],
+      notifications: [
+        ...notificationStateFixture.notifications,
+        { test: 'test' },
+      ],
     };
 
-    expect(notificationsReducer(mockNotificationState, action)).toEqual(
+    expect(notificationsReducer(notificationStateFixture, action)).toEqual(
       expectedResult,
     );
   });
@@ -42,7 +45,7 @@ describe('notificationsReducer', () => {
         },
       ],
     };
-    expect(notificationsReducer(mockNotificationState, action)).toEqual(
+    expect(notificationsReducer(notificationStateFixture, action)).toEqual(
       expectedResult,
     );
   });
@@ -52,8 +55,8 @@ describe('notificationsReducer', () => {
       type: 'TEST',
     };
 
-    expect(notificationsReducer(mockNotificationState, action)).toEqual(
-      mockNotificationState,
+    expect(notificationsReducer(notificationStateFixture, action)).toEqual(
+      notificationStateFixture,
     );
   });
 });
