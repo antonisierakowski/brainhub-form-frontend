@@ -1,15 +1,16 @@
-import {
-  render,
-  RenderResult,
-  fireEvent,
-  prettyDOM,
-  wait,
-} from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { Notification } from '../index';
 import { rootStateFixture } from '../../../../store/fixtures/rootStateFixture';
 import { provideStore } from '../../../../store/utils';
-import { createPreloadedStore } from '../../../../store';
+import { createPreloadedStore, RootState } from '../../../../store';
+import { NotificationType } from '../../../../store/domain/notifications/model';
+import {
+  onlyFailureNotificationStateFixture,
+  onlySuccessNotificationStateFixture,
+  onlyUnexpectedTypeNotificationStateFixture,
+} from '../../../../store/fixtures/notificationStateFixture';
+import { NotificationState } from '../../../../store/domain/notifications/reducer';
 
 const store = createPreloadedStore(rootStateFixture);
 
@@ -34,25 +35,59 @@ it('should display the right notification given specific id', () => {
   expect(container.textContent).toEqual(expectedNotificationText);
 });
 
-// it('should close the notification', async () => {
-//   const notificationIndex = 1;
-//   const { container, getByTestId } = render(provideStore(<Notification id={testIds[notificationIndex]}/>, store))
-//   const closeIcon = getByTestId(`closeIcon_${testIds[notificationIndex]}`)
-//   // act(() => {
-//   //   fireEvent.click(closeIcon)
-//   // })
-//   fireEvent.click(closeIcon)
-//   // console.log(prettyDOM(container))
-//   // await wait(() => {
-//   //   expect(container).toBe(null);
-//   // });
-//   expect(container).toBe(null);
-// })
+describe('getIconType helper function', () => {
+  it('should return Done icon for notification type success', () => {
+    const store = createPreloadedStore(
+      mapNotificationsStateToRootState(onlySuccessNotificationStateFixture),
+    );
+    const {
+      notificationType,
+      id,
+    } = onlySuccessNotificationStateFixture.notifications[0];
+    const { getByTestId, container } = render(
+      provideStore(<Notification id={id} />, store),
+    );
 
-describe('getIconType', () => {
-  it('should return Done icon for notification type success', () => {});
-  it('should return Error icon for notification type failure', () => {});
-  it('should return Info icon for unexpected notification type', () => {});
+    expect(notificationType).toBe(NotificationType.SUCCESS);
+    expect(container.querySelectorAll('.notification')).toHaveLength(1);
+    expect(getByTestId('successIcon')).toBeInTheDocument();
+  });
+  it('should return Error icon for notification type failure', () => {
+    const store = createPreloadedStore(
+      mapNotificationsStateToRootState(onlyFailureNotificationStateFixture),
+    );
+    const {
+      notificationType,
+      id,
+    } = onlyFailureNotificationStateFixture.notifications[0];
+    const { getByTestId, container } = render(
+      provideStore(<Notification id={id} />, store),
+    );
+
+    expect(notificationType).toBe(NotificationType.FAILURE);
+    expect(container.querySelectorAll('.notification')).toHaveLength(1);
+    expect(getByTestId('failureIcon')).toBeInTheDocument();
+  });
+  it('should return Info icon for unexpected notification type', () => {
+    const store = createPreloadedStore(
+      mapNotificationsStateToRootState(
+        onlyUnexpectedTypeNotificationStateFixture,
+      ),
+    );
+    const { id } = onlyUnexpectedTypeNotificationStateFixture.notifications[0];
+    const { getByTestId, container } = render(
+      provideStore(<Notification id={id} />, store),
+    );
+
+    expect(container.querySelectorAll('.notification')).toHaveLength(1);
+    expect(getByTestId('fallbackIcon')).toBeInTheDocument();
+  });
 });
 
-// test if it renders notification based on given id / mocked selector
+const mapNotificationsStateToRootState = (
+  domainState: NotificationState,
+): RootState => {
+  return {
+    notificationsState: domainState,
+  };
+};

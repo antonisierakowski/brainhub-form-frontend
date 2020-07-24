@@ -12,6 +12,7 @@ exports[`should match to the generated snapshot 1`] = `
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root"
+        data-testid="successIcon"
         focusable="false"
         viewBox="0 0 24 24"
       >

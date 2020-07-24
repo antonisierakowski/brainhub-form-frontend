@@ -20,3 +20,33 @@ export const notificationStateFixture: NotificationState = {
     },
   ],
 };
+
+export const onlySuccessNotificationStateFixture: NotificationState = {
+  notifications: [
+    {
+      id: '1',
+      notificationType: NotificationType.SUCCESS,
+      textContent: 'test1',
+    },
+  ],
+};
+
+export const onlyFailureNotificationStateFixture: NotificationState = {
+  notifications: [
+    {
+      id: '1',
+      notificationType: NotificationType.FAILURE,
+      textContent: 'test1',
+    },
+  ],
+};
+
+export const onlyUnexpectedTypeNotificationStateFixture: NotificationState = {
+  notifications: [
+    {
+      id: '1',
+      notificationType: 'test' as NotificationType,
+      textContent: 'test1',
+    },
+  ],
+};

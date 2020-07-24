@@ -30,13 +30,13 @@ export const Notification: React.FC<Props> = ({ id }) => {
 const getIconType = (notificationType: NotificationType) => {
   switch (notificationType) {
     case NotificationType.SUCCESS: {
-      return <Done />;
+      return <Done data-testid="successIcon" />;
     }
     case NotificationType.FAILURE: {
-      return <Error />;
+      return <Error data-testid="failureIcon" />;
     }
     default: {
-      return <Info />;
+      return <Info data-testid="fallbackIcon" />;
     }
   }
 };
