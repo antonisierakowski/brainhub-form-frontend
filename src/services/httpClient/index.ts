@@ -4,7 +4,7 @@ import * as exceptions from './exceptions';
 import { EventModel } from '../../store/request/model';
 import { ApiResponse, StatusCode } from './types';
 
-export const axiosInstance = Axios.default.create({
+export const __axiosInstance = Axios.default.create({
   baseURL: BACKEND_DOMAIN,
 });
 
@@ -13,7 +13,7 @@ export class HttpClient {
   private axiosInstance: Axios.AxiosInstance;
 
   private constructor() {
-    this.axiosInstance = axiosInstance;
+    this.axiosInstance = __axiosInstance;
   }
 
   static getInstance(): HttpClient {

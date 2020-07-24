@@ -1,9 +1,9 @@
-import { axiosInstance, HttpClient } from '../index';
+import { __axiosInstance, HttpClient } from '../index';
 import Axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import * as exceptions from '../exceptions';
 
-const mock = new MockAdapter(axiosInstance);
+const mock = new MockAdapter(__axiosInstance);
 
 describe('HttpClient instance', () => {
   describe('getInstance method', () => {
