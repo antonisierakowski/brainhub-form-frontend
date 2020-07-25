@@ -7,14 +7,18 @@ import {
   fieldIsRequiredMessage,
   validDateMessage,
   validEmailMessage,
+  validNameMessage,
 } from './validationMessages';
 import moment from 'moment';
+
+const onlyLettersRegex = /^[a-z,A-Z]$/;
 
 const nameValidation = (humanReadableFieldName: string) =>
   yup
     .string()
     .min(MIN_NAME_LENGTH, createNameTooShortMessage(humanReadableFieldName))
     .max(MAX_NAME_LENGTH, createNameTooLongMessage(humanReadableFieldName))
+    .matches(onlyLettersRegex, validNameMessage)
     .required(fieldIsRequiredMessage);
 
 export const eventValidationSchema: yup.ObjectSchema = yup

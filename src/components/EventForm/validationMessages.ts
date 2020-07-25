@@ -7,5 +7,6 @@ export const createNameTooLongMessage = (humanReadableFieldName: string) =>
 
 export const fieldIsRequiredMessage = 'This field is required';
 
+export const validNameMessage = 'Please provide a valid name';
 export const validEmailMessage = 'Please provide a valid e-mail address';
 export const validDateMessage = 'Please provide a valid date';

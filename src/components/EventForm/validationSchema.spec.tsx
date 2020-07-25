@@ -18,6 +18,12 @@ describe('validationSchema for event form values', () => {
     expect(await isValid(fixtures.lastNameTooShort)).toBeFalsy();
   });
 
+  it('should fail for each invalid name format', async () => {
+    for (const allValidExceptNames of fixtures.allValidExceptNamesFixtures) {
+      expect(await isValid(allValidExceptNames)).toBeFalsy();
+    }
+  });
+
   it('should fail if email is not valid', async () => {
     expect(await isValid(fixtures.allValidExceptEmail)).toBeFalsy();
   });

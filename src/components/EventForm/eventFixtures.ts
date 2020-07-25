@@ -10,6 +10,16 @@ export const emailInvalid = 'inv@lid';
 export const exampleDateAsString = '12-12-2222';
 export const dateValid = moment(exampleDateAsString);
 export const dateInvalid = '12.12.12';
+export const invalidNames = [
+  '123',
+  ' 123 ',
+  '   Test',
+  'Test   ',
+  '!@#$%^',
+  '!@Test!@',
+  'Test test',
+];
+
 export const validEventFixture: EventFormValues = {
   date: dateValid,
   email: emailValid,
@@ -60,3 +70,9 @@ export const allValidExceptDate = {
   ...validEventFixture,
   date: dateInvalid,
 };
+
+export const allValidExceptNamesFixtures = invalidNames.map(invalidName => ({
+  ...validEventFixture,
+  firstName: invalidName,
+  lastName: invalidName,
+}));
