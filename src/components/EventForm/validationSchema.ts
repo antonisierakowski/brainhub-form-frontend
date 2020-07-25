@@ -11,14 +11,14 @@ import {
 } from './validationMessages';
 import moment from 'moment';
 
-const onlyLettersRegex = /^[a-z,A-Z]$/;
+const singleWordWithCharactersAllowedInNamesRegex = /^[\p{L}'-]+$/u;
 
 const nameValidation = (humanReadableFieldName: string) =>
   yup
     .string()
     .min(MIN_NAME_LENGTH, createNameTooShortMessage(humanReadableFieldName))
     .max(MAX_NAME_LENGTH, createNameTooLongMessage(humanReadableFieldName))
-    .matches(onlyLettersRegex, validNameMessage)
+    .matches(singleWordWithCharactersAllowedInNamesRegex, validNameMessage)
     .required(fieldIsRequiredMessage);
 
 export const eventValidationSchema: yup.ObjectSchema = yup

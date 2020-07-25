@@ -17,7 +17,7 @@ export const invalidNames = [
   'Test   ',
   '!@#$%^',
   '!@Test!@',
-  'Test test',
+  'Test Test',
 ];
 
 export const validEventFixture: EventFormValues = {
